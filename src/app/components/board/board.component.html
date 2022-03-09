@@ -1,13 +1,12 @@
-<h1> Current player: {{ player }}</h1>
+<h1 *ngIf="winner; else elseBlock"> {{winner}}
+  </h1>
+<ng-template #elseBlock><h1>Current player: {{ player }}</h1></ng-template>
 <button (click) = "newGame()">Start new game</button>
-
-<h2 *ngIf="winner; else elseBlock">  {{winner}}</h2>
-<ng-template #elseBlock><h2>Play</h2></ng-template>
-
-
+<hr>
+<div>
 <main>
-    <app-square *ngFor = "let val of squares; let i = index" 
+    <app-square *ngFor = "let val of squares; let i = index"
     [value] = "val"
     (click) = "makeMove(i)"></app-square>
-
 </main>
+</div>
